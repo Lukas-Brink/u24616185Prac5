@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Project Group Information";
+}
+
+<style>
+    /* Animated gradient background */
+    @@keyframes gradientAnimation {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    body {
+        background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffdde1, #ff9a9e);
+        background-size: 400% 400%;
+        animation: gradientAnimation 3s ease infinite; /* Faster color change */
+    }
+
+    main {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 4rem;
+        font-weight: bold;
+    }
+
+    p {
+        font-size: 2rem;
+        color: #555;
+        margin-top: 20px;
+    }
+</style>
+
+<main>
+    <h1>Welcome to Lukas' Study Group</h1>
+    <p>Meet our members (this is not a hyperlink)</p>
+</main>

@@ -1,0 +1,90 @@
+@model IEnumerable<u24616185Prac5.Models.PersonModel>
+
+@{
+    ViewBag.Title = "List of People";
+}
+
+<style>
+    body {
+        background-color: #d4edda;
+    }
+
+    thead {
+        background-color: #218838;
+        color: white;
+    }
+
+    .btn-green {
+        background-color: #28a745;
+        color: white;
+        padding: 5px 10px;
+        text-decoration: none;
+        border-radius: 5px;
+        display: inline-block;
+    }
+
+        .btn-green:hover {
+            background-color: #1e7e34;
+        }
+
+    .highlight {
+        color: red;
+    }
+
+    .link-column {
+        width: 200px;
+    }
+</style>
+
+<h2 class="text-center">List of People</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Student number</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email address</th>
+            <th>Link to personal page</th>
+            <th>Delete</th> <!-- New column for the Delete button -->
+        </tr>
+    </thead>
+    <tbody id="peopleTable">
+        @foreach (var person in Model)
+        {
+            <tr id="row-@person.StudentNumber">
+                <td class="text-center">@person.StudentNumber</td>
+                <td class="text-center">@person.FirstName</td>
+                <td class="text-center">@person.LastName</td>
+                <td class="text-center">@person.EmailAddress</td>
+                <td class="text-center link-column">
+                    <!-- Apply the link-column class here -->
+                    <a href="@Url.Content(person.MyLink)" class="btn-green" target="_blank">LINK</a>
+                </td>
+                <td class="text-center">
+                    <!-- Delete button that calls JavaScript to remove the row -->
+                    <button class="btn-green" onclick="deleteRow(this)">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+
+    function deleteRow(button) {
+
+        var row = button.closest('tr');
+        row.remove();
+    }
+
+    window.onload = function () {
+        var rows = document.querySelectorAll("#peopleTable tr");
+        rows.forEach(function (row) {
+            var firstName = row.cells[1].textContent.trim();
+            if (firstName.charAt(0).toUpperCase() === 'L') {
+                row.classList.add('highlight');
+            }
+        });
+    }
+</script>

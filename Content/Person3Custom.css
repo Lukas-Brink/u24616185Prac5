@@ -1,0 +1,47 @@
+﻿body {
+    background-color: #4CAF50;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table, th, td {
+    border: none;
+}
+
+th, td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 8px;
+}
+
+h1 {
+    border-bottom: 2px solid; /* Add a line under the title */
+    padding-bottom: 10px; /* Add some space between the title and the line */
+}
+
+h2 {
+    padding-top: 20px;
+}
+.navbar {
+    background-color: white !important;
+}
+
+/* Custom styling for images */
+.image-left, .image-right {
+    max-width: 100%;
+    height: auto;
+}
+
+.navbar-default .navbar-nav > .active > a {
+    color: #fff !important; /* White text for the active link */
+    background-color: #5bc0de !important; /* Light blue background for active link */
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: #fff; /* White color on hover */
+    background-color: #388E3C; /* Darker blue background on hover */
+}
+

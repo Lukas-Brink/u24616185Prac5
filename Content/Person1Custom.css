@@ -1,0 +1,62 @@
+﻿body {
+    background-color: #4CAF50;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table, th, td {
+    border: none;
+}
+
+th, td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 8px;
+}
+
+.card {
+    height: 100%;
+}
+
+h1 {
+    color: darkslategrey;
+    border-bottom: 2px solid darkslategrey; /* Add a line under the title */
+    padding-bottom: 10px; /* Add some space between the title and the line */
+}
+
+
+
+/* Apply rounded corners to the navbar */
+.navbar-light {
+    border-radius: 7px; /* Round the corners of the navbar */
+    overflow: hidden; /* Ensure content doesn't spill over the rounded edges */
+    background-color: #4CAF50; /* Green background for the navbar */
+}
+
+    /* Default Navbar Link Style */
+    .navbar-light .navbar-nav .nav-link {
+    
+        transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        border-radius: 5px; /* Round the edges of each navbar link */
+    }
+
+        /* Hover Effect for Navbar Links */
+        .navbar-light .navbar-nav .nav-link:hover {
+            color: #fff; /* White text on hover */
+            background-color: #388E3C; /* Darker green background on hover */
+        }
+
+    /* Active Link Style */
+    .navbar-light .navbar-nav .nav-item.active .nav-link {
+        color: #fff !important; /* White text for active link */
+        background-color: #2C6B32 !important; /* Even darker green for active link */
+    }
+
+    /* Navbar Link Color on Focus */
+    .navbar-light .navbar-nav .nav-link:focus {
+        color: #fff; /* White text on focus */
+        background-color: #388E3C; /* Dark green background on focus */
+    }
