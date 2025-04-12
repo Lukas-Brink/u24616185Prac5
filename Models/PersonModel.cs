@@ -20,9 +20,6 @@ namespace u24616185Prac5.Models
 
         [Display(Name = "Email Address")]
         public string EmailAddress { get; set; }
-
-        [Display(Name = "My Link")]
-        public string MyLink { get; set; }
     }
 
 }

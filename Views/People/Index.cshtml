@@ -21,6 +21,8 @@
         text-decoration: none;
         border-radius: 5px;
         display: inline-block;
+        cursor: pointer;
+        border: none;
     }
 
         .btn-green:hover {
@@ -37,6 +39,16 @@
 </style>
 
 <h2 class="text-center">List of People</h2>
+<p>
+    @Html.ActionLink("Create New", "Create", "People")
+</p>
+
+<form method="get" action="@Url.Action("Index", "People")">
+    Search string: <input type="text" name="searchString" value="@ViewBag.Search" />
+    <input type="submit" value="Submit" class="btn-green" />
+</form>
+
+
 
 <table class="table table-bordered">
     <thead>
@@ -45,8 +57,7 @@
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email address</th>
-            <th>Link to personal page</th>
-            <th>Delete</th> <!-- New column for the Delete button -->
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody id="peopleTable">
@@ -57,10 +68,6 @@
                 <td class="text-center">@person.FirstName</td>
                 <td class="text-center">@person.LastName</td>
                 <td class="text-center">@person.EmailAddress</td>
-                <td class="text-center link-column">
-                    <!-- Apply the link-column class here -->
-                    <a href="@Url.Content(person.MyLink)" class="btn-green" target="_blank">LINK</a>
-                </td>
                 <td class="text-center">
                     <!-- Delete button that calls JavaScript to remove the row -->
                     <button class="btn-green" onclick="deleteRow(this)">Delete</button>
@@ -70,21 +77,64 @@
     </tbody>
 </table>
 
+<!-- Local Storage Buttons -->
+<div style="margin: 15px 0;">
+    <button id="saveLocal" class="btn-green">Save to local storage</button>
+    <button id="retrieveLocal" class="btn-green">Retrieve from local storage</button>
+    <button id="clearLocal" class="btn-green">Clear local storage</button>
+</div>
+
 <script>
-
+    // Function to delete a row from the table
     function deleteRow(button) {
-
         var row = button.closest('tr');
         row.remove();
     }
 
-    window.onload = function () {
-        var rows = document.querySelectorAll("#peopleTable tr");
-        rows.forEach(function (row) {
-            var firstName = row.cells[1].textContent.trim();
-            if (firstName.charAt(0).toUpperCase() === 'L') {
-                row.classList.add('highlight');
+    // Local Storage Buttons functionality
+    document.addEventListener('DOMContentLoaded', function () {
+        // Save button
+        var saveBtn = document.getElementById("saveLocal");
+        saveBtn.addEventListener('click', function () {
+            // Store the innerHTML of the tbody into local storage
+            var tableHtml = document.getElementById("peopleTable").innerHTML;
+            localStorage.setItem("peopleTableData", tableHtml);
+            alert("Table data saved to local storage!");
+        });
+
+        // Retrieve button
+        var retrieveBtn = document.getElementById("retrieveLocal");
+        retrieveBtn.addEventListener('click', function () {
+            var storedHtml = localStorage.getItem("peopleTableData");
+            if (storedHtml) {
+                document.getElementById("peopleTable").innerHTML = storedHtml;
+                alert("Table data retrieved from local storage!");
+            } else {
+                alert("No table data found in local storage.");
             }
         });
-    }
+
+        // Clear button
+        var clearBtn = document.getElementById("clearLocal");
+        clearBtn.addEventListener('click', function () {
+            localStorage.removeItem("peopleTableData");
+            alert("Local storage cleared!");
+        });
+
+        // Highlight rows based on search string (if provided)
+        const searchString = "@ViewBag.Search".toLowerCase();
+        if (searchString) {
+            const rows = document.querySelectorAll("#peopleTable tr");
+            rows.forEach(function (row) {
+                const firstName = row.cells[1].textContent.trim().toLowerCase();
+                if (firstName.includes(searchString)) {
+                    row.classList.add('highlight');
+                    // Remove the highlight after 3 seconds
+                    setTimeout(function () {
+                        row.classList.remove('highlight');
+                    }, 3000);
+                }
+            });
+        }
+    });
 </script>

@@ -24,30 +24,30 @@ h1, h2 {
     justify-content: center;
 }
 
-.menu li {
-    padding: 10px 15px;
-    border-right: 1px solid white;
-}
+    .menu li {
+        padding: 10px 15px;
+        border-right: 1px solid white;
+    }
 
-.menu li:last-child {
-    border-right: none; /* Remove border for last menu item */
-}
+        .menu li:last-child {
+            border-right: none; /* Remove border for last menu item */
+        }
 
-.menu a {
-    text-decoration: none;
-    color: white;
-    padding: 10px 15px;
-    display: block;
-}
+    .menu a {
+        text-decoration: none;
+        color: white;
+        padding: 10px 15px;
+        display: block;
+    }
 
-/* Hover & Active Effects */
-.menu a:hover {
-    background-color: grey;
-}
+        /* Hover & Active Effects */
+        .menu a:hover {
+            background-color: grey;
+        }
 
-.menu a.active {
-    background-color: darkgreen;
-}
+        .menu a.active {
+            background-color: darkgreen;
+        }
 
 /* Section Styling */
 .section {
@@ -57,6 +57,7 @@ h1, h2 {
     margin: 20px auto;
     max-width: 800px;
     background-color: white;
+    border-top: none;
 }
 
 /* Content Wrapper for Image + Paragraph */
@@ -75,11 +76,11 @@ h1, h2 {
     transition: transform 0.5s ease;
 }
 
-/* Flip Image Effect */
-.image-left:hover,
-.image-right:hover {
-    transform: scaleX(-1); /* Flips the image */
-}
+    /* Flip Image Effect */
+    .image-left:hover,
+    .image-right:hover {
+        transform: scaleX(-1); /* Flips the image */
+    }
 
 /* Specific Styling for Left and Right Alignment of Images */
 .image-left {
@@ -107,24 +108,24 @@ h1, h2 {
     width: 100%;
 }
 
-.modules-columns div {
-    width: 45%; /* Each column takes 45% of the container */
-}
+    .modules-columns div {
+        width: 45%; /* Each column takes 45% of the container */
+    }
 
-.modules-columns h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    white-space: nowrap; /* Prevents text from wrapping */
-}
+    .modules-columns h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        white-space: nowrap; /* Prevents text from wrapping */
+    }
 
-.modules-columns ul {
-    list-style-type: none;
-    padding-left: 0;
-}
+    .modules-columns ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
 
-.modules-columns li {
-    margin: 0.5rem 0;
-}
+    .modules-columns li {
+        margin: 0.5rem 0;
+    }
 
 /* Table Styling */
 table {
@@ -156,15 +157,17 @@ th {
         align-items: flex-start; /* Align content to the left */
     }
 
-    .section img {
-        margin-bottom: 10px;
-    }
+        .section img {
+            margin-bottom: 10px;
+        }
 
     .modules-columns {
         flex-direction: column; /* Stack columns vertically on small screens */
     }
 
-    .modules-columns div {
-        width: 100%; /* Make each column full width */
-    }
+        .modules-columns div {
+            width: 100%; /* Make each column full width */
+        }
 }
+
+

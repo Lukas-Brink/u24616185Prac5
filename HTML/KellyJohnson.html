@@ -4,7 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Person 2 Profile</title>
-    <link href="../Content/NewStyle.css" rel="stylesheet" />
+    <link href="../Content/NewStyle.css" rel="stylesheet">
+    <style>
+        /* Tab content hidden by default */
+        .tab-content {
+            display: none;
+        }
+
+            .tab-content.active {
+                display: block;
+            }
+
+        .tab-menu {
+            background-color: #e0e0e0;
+
+            margin: 40px auto -20px auto; /* Centered and moved directly above the content */
+            width: 100%;
+            max-width: 842px; /* Match .section */
+            font-size: 0.9rem;
+            border: 2px solid #ccc; /* Match section border */
+            border-bottom: none; /* Seamless join with content box */
+            display: flex;
+            justify-content: center; /* Center the tab items */
+            box-sizing: border-box;
+            border-radius: 8px 8px 0 0; /* Optional: curved top corners for a nice effect */
+        }
+
+            .tab-menu li {
+                padding: 5px 8px;
+                border-right: 1px solid #aaa;
+                list-style: none;
+            }
+
+                .tab-menu li:last-child {
+                    border-right: none;
+                }
+
+            .tab-menu a {
+                color: #333;
+                padding: 5px 10px;
+                text-decoration: none;
+            }
+
+                .tab-menu a:hover {
+                    background-color: #d0d0d0;
+                }
+
+                .tab-menu a.active {
+                    background-color: #b5ddb5;
+                    font-weight: bold;
+                    color: darkgreen;
+                }
+    </style>
 </head>
 <body>
 
@@ -22,46 +73,79 @@
         <li><a href="javascript:history.back()">BACK</a></li>
     </ul>
 
-    <!-- Section 1: Background & Biography -->
-    <div class="section">
-        <h1>Biography and Background</h1>
-        <div class="section-content">
-            <img src="Images/black-widow-1.webp" alt="Person 1" class="image-left">
-            <p>Kelly has been in several orphanages and homeless shelters during her childhood. Despite her circumstances, she worked hard at school and managed to secure a bursary for her talent in the arts. She is currently studying BSC Success and some of her entrepreneurial endeavors have already amounted to functional businesses. She hopes to one day become a capitalistc powerhouse, the likes of which Elon Musk would pale in comparison to. "Something should definitely be done about Elon Musk" she proclaims, whatever that means...</p>
+    <!-- Navigation Menu with data-tab Attributes -->
+    <ul class="menu tab-menu">
+        <li><a href="#" data-tab="bio" class="active">Biography</a></li>
+        <li><a href="#" data-tab="hobbies">Hobbies</a></li>
+        <li><a href="#" data-tab="modules">Modules</a></li>
+    </ul>
+
+    <!-- Content Sections (Tabs) -->
+    <div id="content-container" class="section">
+        <!-- Default content for Biography -->
+        <div id="bio" class="tab-content active">
+            <h2>Biography and Background</h2>
+            <div class="section-content">
+                <img src="Images/black-widow-1.webp" alt="Kelly Johnson" class="image-left" style="max-width:150px; float:left; margin-right:1rem;">
+                <p>Kelly has been in several orphanages and homeless shelters during her childhood. Despite her circumstances, she worked hard at school and managed to secure a bursary for her talent in the arts. She is currently studying BSC Success and some of her entrepreneurial endeavors have already amounted to functional businesses. She hopes to one day become a capitalist powerhouse— the likes of which Elon Musk would pale in comparison to.</p>
+            </div>
+        </div>
+
+        <!-- Default content for Hobbies -->
+        <div id="hobbies" class="tab-content">
+            <h2>Hobbies</h2>
+            <div class="section-content">
+                <p>Kelly's official statement when asked about her hobbies was the following: "My only hobby is getting to a bag." While this does not tell us much about her interests, it gives us some insight into her character.</p>
+                <img src="Images/Don-cheadle-as-rhodey-Cropped.webp" alt="Hobby" class="image-right" style="max-width:150px; float:right; margin-left:1rem;">
+            </div>
+        </div>
+
+        <!-- Default content for Modules -->
+        <div id="modules" class="tab-content">
+            <h2>Modules</h2>
+            <div class="modules-columns">
+                <div>
+                    <h3>Modules Semester 1</h3>
+                    <ul>
+                        <li>INL 230</li>
+                        <li>INL 210</li>
+                        <li>OBS 214</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Modules Semester 2</h3>
+                    <ul>
+                        <li>PUB 220</li>
+                        <li>INL 260</li>
+                        <li>INL 270</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Section 2: Hobbies -->
-    <div class="section">
-        <h1>Hobbies</h1>
-        <div class="section-content">
-            <p>Kelly's official statement when asked about her hobbies was the following: "My only hobby is getting to a bag." While this does not tell us much about her interests, it gives us some insight into her character.</p>
-            <img src="Images/Don-cheadle-as-rhodey-Cropped.webp" alt="Hobby" class="image-right">
-        </div>
-    </div>
+    <!-- JavaScript to Switch Tabs -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabLinks = document.querySelectorAll('.tab-menu a');
+            const tabContents = document.querySelectorAll('.tab-content');
 
-    <!-- Section 3: Modules Table -->
-    <div class="section">
-        <h1>Modules</h1>
-        <div class="modules-columns">
-            <div>
-                <h3>Modules Semester 1</h3>
-                <ul>
-                    <li>INL 230</li>
-                    <li>INL 210</li>
-                    <li>OBS 214</li>
-                </ul>
-            </div>
-            <div>
-                <h3>Modules Semester 2</h3>
-                <ul>
-                    <li>PUB 220</li>
-                    <li>INL 260</li>
-                    <li>INL 270</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    // Remove 'active' class from all tab links and contents
+                    tabLinks.forEach(l => l.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+
+                    // Add 'active' class to the clicked tab and related content
+                    const tabId = link.getAttribute('data-tab');
+                    link.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
